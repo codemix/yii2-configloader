@@ -1,0 +1,21 @@
+{
+    "name": "codemix/yii2-configloader",
+    "description": "Build configuration arrays from config files and env vars.",
+    "keywords": ["yii2", "config", "environment"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Härtl",
+            "email": "haertl.mike@gmail.com"
+        }
+    ],
+    "require": {
+      "yiisoft/yii2": "*",
+      "vlucas/phpdotenv": "1.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "codemix\\yii2confload\\": "src/"
+        }
+    }
+}
