@@ -1,8 +1,11 @@
 Yii2 Configloader
 =================
 
+[![Build Status](https://secure.travis-ci.org/codemix/yii2-configloader.png)](http://travis-ci.org/codemix/yii2-configloader)
 [![Latest Stable Version](https://poser.pugx.org/codemix/yii2-configloader/v/stable.svg)](https://packagist.org/packages/codemix/yii2-configloader)
+[![Latest Unstable Version](https://poser.pugx.org/codemix/yii2-configloader/v/unstable.svg)](https://packagist.org/packages/codemix/yii2-configloader)
 [![Total Downloads](https://poser.pugx.org/codemix/yii2-configloader/downloads)](https://packagist.org/packages/codemix/yii2-configloader)
+[![HHVM Status](http://hhvm.h4cc.de/badge/yiisoft/yii2-dev.png)](http://hhvm.h4cc.de/package/codemix/yii2-configloader)
 [![License](https://poser.pugx.org/codemix/yii2-configloader/license.svg)](https://packagist.org/packages/codemix/yii2-configloader)
 
 Build configuration arrays from config files and environment variables.
