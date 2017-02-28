@@ -86,10 +86,7 @@ class Config
      * are set accordingly. In debug mode the error reporting is also set to `E_ALL`.
      *
      * @param string $directory the application base directory
-     * @param bool $initEnv whether to initialize the Yii environment. Default
-     * is `true
-     * @param string|null $envDir the directory to look for a `.env` file or
-     * `null` to not load any environment variables from that file.
+     * @param bool $initEnv whether to initialize the Yii environment. Default is `true`.
      */
     public function __construct($directory, $initEnv = true)
     {
@@ -201,6 +198,26 @@ class Config
         $configs = array_map(function ($f) { return require($f); }, $files);
         $configs[] = $config;
         return call_user_func_array('yii\helpers\ArrayHelper::merge', $configs);
+    }
+
+    /**
+     * Init the configuration for the given directory and load the Yii bootstrap file.
+     *
+     * @param string $directory the application directory
+     * @param string|null $vendor the composer vendor directory. Default is `null`
+     * which means, the vendor directory is autodetected.
+     * @param bool $initEnv whether to initialize the Yii environment. Default is `true`.
+     * @return static the Config instance for that application directory
+     */
+    public static function bootstrap($directory, $vendor = null, $initEnv = true)
+    {
+        $sep = DIRECTORY_SEPARATOR;
+        if ($vendor === null) {
+            $vendor = realpath(__DIR__ . $sep . '..' . $sep . '..' . $sep . '..');
+        }
+        $config = new self($directory, $initEnv);
+        require(rtrim($vendor, $sep) . $sep . 'yiisoft' . $sep . 'yii2' . $sep . 'Yii.php');
+        return $config;
     }
 
     /**
