@@ -69,7 +69,8 @@ If you leave away the application path, no `.env` file will be loaded.
 
 ### Loading configuration
 
-The extension requires the following naming scheme for your configuration files:
+If want to load your configuration with this extenstion, the following naming scheme
+must be followed:
 
  * `config/web.php` - Web configuration
  * `config/console.php` - Console configuration
