@@ -242,7 +242,7 @@ class Config
     public static function env($name, $default = null, $required = false)
     {
         if ($required) {
-            Dotenv::required($name);
+            \Dotenv::required($name);
         }
         return isset($_ENV[$name]) ? $_ENV[$name] : $default;
     }
