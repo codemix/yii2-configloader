@@ -41,15 +41,15 @@ files that live outside of version control.
 
 You have several options how to use this extension:
 
- * Use only the Yii environment initialization
- * Use only the configuration loader
- * Use both
+ 1. Use only the Yii environment initialization
+ 2. Use only the configuration loader
+ 3. Use both
 
 We first show how to use the first two options "standalone" and then a third,
 combined way that includes all features.
 
 
-### Initializing Yii environment
+### 1. Initializing Yii environment
 
 This will set the `YII_DEBUG` and `YII_ENV` variables according to the respective
 environment variables if those are set. It can also load them from a `.env` file.
@@ -67,7 +67,7 @@ $setting = Config::env('MY_SETTING', 'default');
 If you leave away the application path, no `.env` file will be loaded.
 
 
-### Loading configuration
+### 2. Loading configuration
 
 If want to load your configuration with this extenstion, the following naming scheme
 must be followed:
@@ -89,7 +89,7 @@ $config = new Config('/path/to/app', false);
 $webConfig = $config->web();
 ```
 
-#### Local configuration
+#### 2.1 Local configuration
 
 By default local configuration files `local.php` and `local-console.php` are not
 loaded. To activate this feature you can either set the `ENABLE_LOCALCONF` environment
@@ -115,7 +115,7 @@ $webConfig = $config->web([], true);
 $consoleConfig = $config->console([], true);
 ```
 
-#### Merging custom configuration
+#### 2.2 Merging custom configuration
 
 You can also inject some other configuration when you fetch the web or console config:
 
@@ -127,7 +127,7 @@ $webConfig = $config->web(['id' => 'test'], true);
 ```
 
 
-### Initialize Yii environment and load configuration
+### 3. Initialize Yii environment and load configuration
 
 Let's finally show a full example that demonstrates how to use all the mentioned
 features in one go. A typical setup will use the following files:
