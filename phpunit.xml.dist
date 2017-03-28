@@ -9,7 +9,7 @@
          processIsolation="true"
          stopOnFailure="false"
          syntaxCheck="false"
-         bootstrap="vendor/autoload.php"
+         bootstrap="tests/bootstrap.php"
 >
     <testsuites>
         <testsuite name="Yii2 Config Test Suite">
