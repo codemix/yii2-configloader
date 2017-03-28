@@ -1,7 +1,7 @@
 <?php
 use codemix\yii2confload\Config;
 
-class EnvTest extends \PHPUnit_Framework_TestCase
+class EnvTest extends \PHPUnit\Framework\TestCase
 {
     public function testCanInitYiiEnvFromEnvVars()
     {

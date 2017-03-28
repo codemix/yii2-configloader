@@ -1,7 +1,7 @@
 <?php
 use codemix\yii2confload\Config;
 
-class ConsoleConfigTest extends \PHPUnit_Framework_TestCase
+class ConsoleConfigTest extends \PHPUnit\Framework\TestCase
 {
     public function testCanGetConfig()
     {

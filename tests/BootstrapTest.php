@@ -1,7 +1,7 @@
 <?php
 use codemix\yii2confload\Config;
 
-class BootstrapTest extends \PHPUnit_Framework_TestCase
+class BootstrapTest extends \PHPUnit\Framework\TestCase
 {
     public function testCanBootstrapApplication()
     {
