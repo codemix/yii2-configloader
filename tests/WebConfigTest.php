@@ -43,7 +43,7 @@ class WebConfigTest extends \PHPUnit_Framework_TestCase
     public function testCanMergeLocalConfigByEnvVar()
     {
         $config = new Config(__DIR__ . '/app');
-        putenv('ENABLE_LOCALCONF=1');
+        $_ENV['ENABLE_LOCALCONF'] = 1;
         $web = $config->web([
             'key5' => 'test',
         ]);
