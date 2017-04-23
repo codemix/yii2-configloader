@@ -5,8 +5,8 @@ class EnvTest extends \PHPUnit\Framework\TestCase
 {
     public function testCanInitYiiEnvFromEnvVars()
     {
-        putenv('YII_DEBUG=1');
-        putenv('YII_ENV=prod');
+        $_ENV['YII_DEBUG'] = true;
+        $_ENV['YII_ENV'] = 'prod';
         Config::initEnv();
 
         $this->assertTrue(defined('YII_DEBUG'));
@@ -27,8 +27,8 @@ class EnvTest extends \PHPUnit\Framework\TestCase
 
     public function testCanGetEnvVars()
     {
-        putenv('TEST1=987');
-        putenv('TEST2=demo');
+        $_ENV['TEST1'] = 987;
+        $_ENV['TEST2'] = 'demo';
 
         $this->assertEquals(987, Config::env('TEST1'));
         $this->assertEquals('demo', Config::env('TEST2'));
@@ -48,8 +48,8 @@ class EnvTest extends \PHPUnit\Framework\TestCase
 
     public function testEnvFileDoesNotClearEnvVars()
     {
-        putenv('TEST1=654');
-        putenv('TEST2=xyz');
+        $_ENV['TEST1'] = 654;
+        $_ENV['TEST2'] = 'xyz';
         Config::initEnv(__DIR__ . '/app');
 
         $this->assertEquals(654, Config::env('TEST1'));
@@ -61,8 +61,8 @@ class EnvTest extends \PHPUnit\Framework\TestCase
 
     public function testEnvFileDoesNotOverrideEnvVars()
     {
-        putenv('VAR1=654');
-        putenv('VAR2=xyz');
+        $_ENV['VAR1'] = 654;
+        $_ENV['VAR2'] = 'xyz';
         Config::initEnv(__DIR__ . '/app');
 
         $this->assertEquals('', Config::env('YII_DEBUG'));

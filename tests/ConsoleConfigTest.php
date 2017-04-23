@@ -47,7 +47,7 @@ class ConsoleConfigTest extends \PHPUnit\Framework\TestCase
     public function testCanMergeLocalConfigByEnvVar()
     {
         $config = new Config(__DIR__ . '/app');
-        putenv('ENABLE_LOCALCONF=1');
+        $_ENV['ENABLE_LOCALCONF'] = 1;
         $console = $config->console([
             'key5' => 'test',
         ]);
