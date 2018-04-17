@@ -235,14 +235,16 @@ class Config
         }
 
         // Define main Yii environment variables
-        if (getenv('YII_DEBUG') !== false) {
-            define('YII_DEBUG', (bool)getenv('YII_DEBUG'));
+        $debug = self::env('YII_DEBUG', false);
+        if ($debug !== false) {
+            define('YII_DEBUG', (bool)$debug);
             if (YII_DEBUG) {
                 error_reporting(E_ALL);
             }
         }
-        if (getenv('YII_ENV') !== false) {
-            define('YII_ENV', getenv('YII_ENV'));
+        $env = self::env('YII_ENV', false);
+        if ($env !== false) {
+            define('YII_ENV', $env);
         }
     }
 
@@ -261,7 +263,14 @@ class Config
         if ($required) {
             \Dotenv::required($name);
         }
-        return getenv($name) === false ? $default : getenv($name);
+        if (array_key_exists($name, $_ENV)) {
+            return $_ENV[$name];
+        }
+        if (array_key_exists($name, $_SERVER)) {
+            return $_SERVER[$name];
+        }
+        $value = getenv($name);
+        return $value === false ? $default : $value;
     }
 
 }
