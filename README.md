@@ -98,9 +98,10 @@ variable (either in your server environment or in `.env`):
 ENABLE_LOCALCONF=1
 ```
 
-Now any call to `web()` or `console()` will return the merged result of `config/web.php` +
-`config/console.php` or `config/console.php` + `config/local-console.php` respectively.
+Now the methods will return the corresponding merged results:
 
+ * `web()`: `config/web.php` + `config/local.php`
+ * `console()`: `config/console.php` + `config/local-console.php`
 
 Alternatively you can explicitely ask for local configuration:
 
