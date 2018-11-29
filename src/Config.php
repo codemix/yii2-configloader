@@ -231,7 +231,8 @@ class Config
     public static function initEnv($directory = null)
     {
         if ($directory !== null && file_exists($directory . DIRECTORY_SEPARATOR . '.env')) {
-            \Dotenv::load($directory);
+            $dotenv = new \Dotenv\Dotenv($directory);
+            $dotenv->load();
         }
 
         // Define main Yii environment variables
@@ -260,9 +261,6 @@ class Config
      */
     public static function env($name, $default = null, $required = false)
     {
-        if ($required) {
-            \Dotenv::required($name);
-        }
         if (array_key_exists($name, $_ENV)) {
             return $_ENV[$name];
         }
@@ -270,7 +268,9 @@ class Config
             return $_SERVER[$name];
         }
         $value = getenv($name);
+        if ($value === false && $required) {
+            throw new \Exception("Environment variable '$name' is not set");
+        }
         return $value === false ? $default : $value;
     }
-
 }

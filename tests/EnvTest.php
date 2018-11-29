@@ -35,11 +35,21 @@ class EnvTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('default', Config::env('TEST3', 'default'));
     }
 
+    public function testCanRequireEnvVar()
+    {
+        try {
+            $x = Config::env('DOESNOTEXIST', null, true);
+            $this->fail('No exception thrown for missing env variable');
+        } catch (\Exception $e) {
+            $this->assertEquals("Environment variable 'DOESNOTEXIST' is not set", $e->getMessage());
+        }
+    }
+
     public function testCanGetEnvVarsFromEnvFile()
     {
         Config::initEnv(__DIR__ . '/app');
 
-        $this->assertEquals('', Config::env('YII_DEBUG'));
+        $this->assertEquals(0, Config::env('YII_DEBUG'));
         $this->assertEquals('dev', Config::env('YII_ENV'));
         $this->assertEquals('dotenv1', Config::env('VAR1'));
         $this->assertEquals(2, Config::env('VAR2'));
@@ -65,7 +75,7 @@ class EnvTest extends \PHPUnit\Framework\TestCase
         putenv('VAR2=xyz');
         Config::initEnv(__DIR__ . '/app');
 
-        $this->assertEquals('', Config::env('YII_DEBUG'));
+        $this->assertEquals(0, Config::env('YII_DEBUG'));
         $this->assertEquals('dev', Config::env('YII_ENV'));
         $this->assertEquals(654, Config::env('VAR1'));
         $this->assertEquals('xyz', Config::env('VAR2'));

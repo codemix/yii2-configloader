@@ -11,7 +11,7 @@
     ],
     "require": {
       "yiisoft/yii2": "*",
-      "vlucas/phpdotenv": "1.0.*"
+      "vlucas/phpdotenv": "2.5.*"
     },
     "autoload": {
         "psr-4": {
