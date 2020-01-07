@@ -1,7 +1,10 @@
 <?php
+namespace tests;
+
+use \PHPUnit\Framework\TestCase;
 use codemix\yii2confload\Config;
 
-class WebConfigTest extends \PHPUnit\Framework\TestCase
+class WebConfigTest extends TestCase
 {
     public function testCanGetConfig()
     {
