@@ -1,7 +1,10 @@
 <?php
+namespace tests;
+
+use \PHPUnit\Framework\TestCase;
 use codemix\yii2confload\Config;
 
-class BootstrapTest extends \PHPUnit\Framework\TestCase
+class BootstrapTest extends TestCase
 {
     public function testCanBootstrapApplication()
     {
