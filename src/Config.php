@@ -231,7 +231,7 @@ class Config
     public static function initEnv($directory = null)
     {
         if ($directory !== null && file_exists($directory . DIRECTORY_SEPARATOR . '.env')) {
-            $dotenv = new \Dotenv\Dotenv($directory);
+            $dotenv = \Dotenv\Dotenv::createImmutable($directory);
             $dotenv->load();
         }
 
