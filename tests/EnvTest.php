@@ -61,11 +61,11 @@ class EnvTest extends TestCase
 
     public function testEnvFileDoesNotClearEnvVars()
     {
-        putenv('TEST1=654');
-        putenv('TEST2=xyz');
+        $_ENV['TEST1'] = '654';
+        $_ENV['TEST2'] = 'xyz';
         Config::initEnv(__DIR__ . '/app');
 
-        $this->assertEquals(654, Config::env('TEST1'));
+        $this->assertEquals('654', Config::env('TEST1'));
         $this->assertEquals('xyz', Config::env('TEST2'));
         $this->assertEquals('dotenv1', Config::env('VAR1'));
         $this->assertEquals(2, Config::env('VAR2'));
@@ -74,13 +74,13 @@ class EnvTest extends TestCase
 
     public function testEnvFileDoesNotOverrideEnvVars()
     {
-        putenv('VAR1=654');
-        putenv('VAR2=xyz');
+        $_ENV['VAR1'] = '654';
+        $_ENV['VAR2'] = 'xyz';
         Config::initEnv(__DIR__ . '/app');
 
         $this->assertEquals(0, Config::env('YII_DEBUG'));
         $this->assertEquals('dev', Config::env('YII_ENV'));
-        $this->assertEquals(654, Config::env('VAR1'));
+        $this->assertEquals('654', Config::env('VAR1'));
         $this->assertEquals('xyz', Config::env('VAR2'));
     }
 
